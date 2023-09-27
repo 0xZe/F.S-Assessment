@@ -1,5 +1,6 @@
-- name: "AWS - Install docker"
-  hosts: awsec2instances
+- name: eks-worker-node
+  hosts: eks-nodes
+  remote_user: ec2-user
   become: yes
   tasks:
     - name: Update all packages
@@ -61,3 +62,15 @@
         - boto
         - boto3
         - docker-compose
+
+    - name: adding ec2-user to docker group
+      user:
+          name: ec2-user
+          groups: docker
+          append: yes
+
+  handlers:
+    - name: restart docker
+      service: 
+        name: docker 
+        state: restarted
