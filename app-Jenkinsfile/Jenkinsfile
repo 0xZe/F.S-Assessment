@@ -38,11 +38,11 @@ pipeline {
 
       stage('Deploy the App (CD)') {
             steps {
-                {
+                
 
                   sh """
                   cd App-K8s
-		  kubectl -n app apply -f deployment.yaml
+		          kubectl -n app apply -f deployment.yaml
                   kubectl -n app apply -f service.yaml
                   """
                  sleep(time: 10, unit: "SECONDS")
@@ -59,6 +59,4 @@ pipeline {
               
           
        }
-            }
-       }
-
+      }
