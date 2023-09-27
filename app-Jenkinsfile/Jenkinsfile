@@ -49,7 +49,7 @@ pipeline {
 		}
 	    }
                 
-      }
+     
 			//kubectl create namespace app
 
       stage('Return APP URL') {
@@ -61,4 +61,4 @@ pipeline {
        }
       }
        }
-
+ }
