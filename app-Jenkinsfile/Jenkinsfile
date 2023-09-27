@@ -12,11 +12,8 @@ pipeline {
             }
         }
 
-
       stage('Build & push Dockerfile (CI)') {
             steps {
-		     
-		   
               sh """
               cd Ansible-Playbooks
               ansible-playbook build-container.yml
@@ -33,24 +30,18 @@ pipeline {
                 }
 	    }
      
-        
-
-
       stage('Deploy the App (CD)') {
             steps {
                 
 
                   sh """
                   	cd app-k8s
-		        kubectl -n app apply -f deployment.yaml
-                  	kubectl -n app apply -f service.yaml
+		        kubectl -n app apply -f *
                   """
                  sleep(time: 10, unit: "SECONDS")
 		}
 	    }
                 
-     
-			//kubectl create namespace app
 
       stage('Return APP URL') {
           steps {
