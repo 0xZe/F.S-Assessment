@@ -5,7 +5,7 @@ pipeline {
         stage('terraform init') {
             steps{
                 sh """
-                   cd EKS-Iac
+                   cd modules
                    terraform init
                   """
             }
@@ -13,7 +13,7 @@ pipeline {
         stage('terraform action') {
             steps {
                   sh """
-                   cd EKS-Iac
+                   cd modules
                    echo "Terraform action is --> ${action}"
                    terraform ${action} --auto-approve
                   """
