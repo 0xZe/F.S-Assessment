@@ -1,3 +1,7 @@
+#define aws
+provider "aws" {
+  region = "us-east-1"
+}
 module "vpc-network" {
   source                        = "./vpc-network"
   vpc_cidr                      = var.vpc_cidr
