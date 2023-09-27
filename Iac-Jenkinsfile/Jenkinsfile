@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+ 
+    stages {
+        stage('terraform init') {
+            steps{
+                sh """
+                   cd EKS-Iac
+                   terraform init
+                  """
+            }
+        }
+        stage('terraform action') {
+            steps {
+                  sh """
+                   cd EKS-Iac
+                   echo "Terraform action is --> ${action}"
+                   terraform ${action} --auto-approve
+                  """
+ 
+            }
+        }
+    }  
