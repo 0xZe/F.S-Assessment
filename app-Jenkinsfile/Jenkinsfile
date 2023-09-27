@@ -18,8 +18,8 @@ pipeline {
 		     
 		   
               sh """
-              cd App-Ansible
-              ansible-playbook playbook.yml
+              cd Ansible-Playbooks
+              ansible-playbook build-container.yml
               """
 	    }
       }
