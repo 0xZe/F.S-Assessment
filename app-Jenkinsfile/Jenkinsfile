@@ -41,24 +41,22 @@ pipeline {
       }
       stage('Deploy the App (CD)') {
             steps {
-             
-              //  withCredentials([[
+              
+               // withCredentials([[
                //   $class: 'AmazonWebServicesCredentialsBinding',
-               //   credentialsId: "aws-credentials",
-               //   accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-               //   secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-               //   ]]) {
+                //  credentialsId: "aws-credentials",
+                //  accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                //  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                //  ]]) {
+
                   sh """
                   		cd app-k8s
 		        	kubectl -n app apply -f *
                   	"""
                  	sleep(time: 10, unit: "SECONDS")
-		}
+                }
 	    }
-                
-      }
-			//kubectl create namespace app
-
+      }	//kubectl create namespace app
       stage('Return APP URL') {
           steps {
             
