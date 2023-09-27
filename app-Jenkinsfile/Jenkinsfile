@@ -52,8 +52,8 @@ pipeline {
                //   secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                //   ]]) {
                   sh """
-                  cd App-K8s
-		              kubectl -n app apply -f *
+                  	cd app-k8s
+		        kubectl -n app apply -f *
                   """
                  sleep(time: 10, unit: "SECONDS")
 		}
