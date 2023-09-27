@@ -11,7 +11,7 @@ resource "aws_eks_node_group" "node_group" {
   }
 
   remote_access {
-    ec2_ssh_key = "lb"
+    ec2_ssh_key = "key"
   }
 
   ami_type       = "AL2_x86_64"
