@@ -1,36 +1,34 @@
 - name: eks-worker-node
-  hosts: all
-  remote_user: ec2-user 
+  hosts: eks-nodes
+  remote_user: ec2-user
   become: yes
   tasks:
     - name: Install pre-requisite packages
-    yum:
-      name: "{{item}}"
-      state: latest
-    loop:
-      - yum-utils
-      - device-mapper-persistent-data
-      - lvm2
+      yum:
+        name: "{{item}}"
+        state: latest
+      loop:
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
 
     - name: Add Docker CE repo
-        get_url:
-          url: https://download.docker.com/linux/centos/docker-ce.repo
-          dest: /etc/yum.repos.d/docker-ce.repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
 
     - name: Install Docker
-        yum: name=docker state=latest
+      yum: name=docker state=latest
 
     - name: Start and enable the Docker daemon
-        service: name=docker state=started enabled=yes
+      service: name=docker state=started enabled=yes
 
     - name: adding ec2-user to docker group
-          user:
-            name: ec2-user
-            groups: docker
-            append: yes
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
 
   handlers:
     - name: restart docker
-      service: 
-        name: docker 
-        state: restarted
+      service:
