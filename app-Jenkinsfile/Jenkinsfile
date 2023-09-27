@@ -42,8 +42,8 @@ pipeline {
         
 
 
-      stage('Deploy the App (CD)') {
-            steps {
+       stage('Deploy the App (CD)') {
+        	steps {
              
               //  withCredentials([[
                //   $class: 'AmazonWebServicesCredentialsBinding',
