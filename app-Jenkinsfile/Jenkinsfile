@@ -36,7 +36,9 @@ pipeline {
 
                   sh """
                   	cd app-k8s
-		        kubectl apply -f *
+		   	kubectl create namespace app
+      			kubectl -n app apply -f bakehouse-app-deployment.yml
+                  	kubectl -n app apply -f bakehouse-app-service.yml
                   """
                  sleep(time: 10, unit: "SECONDS")
 		}
