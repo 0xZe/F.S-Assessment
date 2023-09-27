@@ -1,4 +1,4 @@
 
-output "bastion-public-ip" {
-  value = module.bastion.public_ip
-}
+#output "bastion-public-ip" {
+ # value = module.bastion.public_ip
+#}
