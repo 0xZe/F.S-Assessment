@@ -39,9 +39,6 @@ pipeline {
                 }
 	    }
       }
-        
-
-
       stage('Deploy the App (CD)') {
             steps {
              
