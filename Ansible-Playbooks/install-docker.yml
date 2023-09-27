@@ -1,34 +1,61 @@
 - name: eks-worker-node
-  hosts: eks-nodes
+  hosts: eks_nodes
   remote_user: ec2-user
   become: yes
   tasks:
-    - name: Install pre-requisite packages
+    - name: Update all packages
       yum:
-        name: "{{item}}"
+        name: '*'
         state: latest
-      loop:
+        update_only: yes
+
+    - name: Ensure a list of yum packages are installed
+      yum:
+        name: "{{ packages }}"
+        state: latest
+        update_cache: yes
+      vars:
+        packages:
+        - python-pip
         - yum-utils
         - device-mapper-persistent-data
         - lvm2
+        - amazon-linux-extras
 
-    - name: Add Docker CE repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
+    - name: Add extras repository
+      shell: yum-config-manager --enable extras
 
-    - name: Install Docker
-      yum: name=docker state=latest
+    - name: Enable Some packages from amazon-linux-extras packages
+      shell: "amazon-linux-extras enable python3.8 ansible2 docker"
 
-    - name: Start and enable the Docker daemon
-      service: name=docker state=started enabled=yes
+    - name: clean yum metadata cache
+      command: yum clean metadata
+      args:
+        warn: false
+
+    - name: Ensure a list of yum packages are installed
+      yum:
+        name: "{{ packages }}"
+        state: latest
+        update_cache: yes
+      vars:
+        packages:
+        - docker
+
+    - name: Enable Docker CE service at startup
+      service:
+        name: docker
+        state: started
+        enabled: yes
 
     - name: adding ec2-user to docker group
       user:
-        name: ec2-user
-        groups: docker
-        append: yes
+          name: ec2-user
+          groups: docker
+          append: yes
 
   handlers:
     - name: restart docker
-      service:
+      service: 
+        name: docker 
+        state: restarted
