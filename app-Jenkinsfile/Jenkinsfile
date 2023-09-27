@@ -36,7 +36,7 @@ pipeline {
 
                   sh """
                   	cd app-k8s
-		        kubectl -n app apply -f *
+		        kubectl apply -f *
                   """
                  sleep(time: 10, unit: "SECONDS")
 		}
