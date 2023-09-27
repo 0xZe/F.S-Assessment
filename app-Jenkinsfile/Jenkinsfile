@@ -42,8 +42,8 @@ pipeline {
         
 
 
-       stage('Deploy the App (CD)') {
-        	steps {
+      stage('Deploy the App (CD)') {
+            steps {
              
               //  withCredentials([[
                //   $class: 'AmazonWebServicesCredentialsBinding',
@@ -51,7 +51,7 @@ pipeline {
                //   accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                //   secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                //   ]]) {
-                  	sh """
+                  sh """
                   		cd app-k8s
 		        	kubectl -n app apply -f *
                   	"""
