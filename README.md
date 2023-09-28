@@ -54,7 +54,7 @@ then create another pipeline to Deploy a microservices application on the Aws EK
 
 ## Step 5: Create another pipeline to Deploy a microservices application on the Aws EKS cluster
 
-- `Our application is on` `app` `with a Dockerfile to build it`
+- `Our application files is on` `app` `with a Dockerfile to build them`
 - `We will create a pipeline to build our application and deploy it on the EKS cluster`
 - `Application Jenkins file is` `app-Jenkinsfile`
 - `Stages of application pipeline is:`
