@@ -45,12 +45,31 @@ then create another pipeline to Deploy a microservices application on the Aws EK
 
 - `I made ansible playbook to install docker on cluster worker nodes`
 - `inventory file contains private ips of worker nodes`
-- `install-docker.yml` `is in` `Ansible-Playbooks`
+- `install-docker.yml playbook` `is in` `Ansible-Playbooks`
 
 ![6](https://github.com/0xZe/F.S-Assessment/assets/81789671/dea5c541-567d-491e-81de-0e18ea2dade1)
 
 ![7](https://github.com/0xZe/F.S-Assessment/assets/81789671/2be7e76e-c743-4c50-bda4-c20f1f5e0fc9)
 ![8](https://github.com/0xZe/F.S-Assessment/assets/81789671/e1759dc4-0590-4695-8a2a-f1e57d2eefef)
+
+## Step 5: Create another pipeline to Deploy a microservices application on the Aws EKS cluster
+
+- `Our application is on` `app` `with a Dockerfile to build it`
+- `We will create a pipeline to build our application and deploy it on the EKS cluster`
+- `Application Jenkins file is` `app-Jenkinsfile`
+- `Stages of application pipeline is:`
+    - `login to dockerhub to push application image after build it`
+    - `cd` `Ansible-Playbooks` `and run` `build-container.yml playbook` `which is an ansible playbook to build application Dockerfile then push it to dockerhub`
+    - `Update` `kubeconfig file` `to add EKS cluster context on it so we can deploy our application on it`
+    - `cd` `app-k8s` `and run k8s files to deploy our application`
+    - `Last stage of the pipeline is return lb URL so we can access our application`
+  
+![9](https://github.com/0xZe/F.S-Assessment/assets/81789671/f906d5d6-3e05-48b7-b096-f83c82df9517)
+
+![10](https://github.com/0xZe/F.S-Assessment/assets/81789671/14ca5815-8cec-41a7-a473-e6a5770777b1)
+![11](https://github.com/0xZe/F.S-Assessment/assets/81789671/3f8a3f66-8016-4197-8090-030435b03905)
+
+   
 
 
 
