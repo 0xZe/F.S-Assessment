@@ -3,6 +3,9 @@
 The idea of the project is to create pipeline to provision K8s EKS cluster on AWS 
 then create another pipeline to Deploy a microservices application on the Aws EKS cluster
 
+# Project diagram
+
+![EKS-diagram](https://github.com/0xZe/F.S-Assessment/assets/81789671/8dfc8aae-9762-4642-a730-348e27663a5f)
 
 ## Step 1: Prerequisites
 
