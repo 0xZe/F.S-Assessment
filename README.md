@@ -7,6 +7,8 @@ then create another pipeline to Deploy a microservices application on the Aws EK
 
 ![EKS-diagram](https://github.com/0xZe/F.S-Assessment/assets/81789671/8dfc8aae-9762-4642-a730-348e27663a5f)
 
+# Steps:
+
 ## Step 1: Prerequisites
 
 - `I customed jenkins image with terraform, ansible, docker client and kubectl installed in it,Cause we will need these tools in our pipelines`
@@ -71,25 +73,3 @@ then create another pipeline to Deploy a microservices application on the Aws EK
 
 ![10](https://github.com/0xZe/F.S-Assessment/assets/81789671/14ca5815-8cec-41a7-a473-e6a5770777b1)
 ![11](https://github.com/0xZe/F.S-Assessment/assets/81789671/3f8a3f66-8016-4197-8090-030435b03905)
-
-   
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
